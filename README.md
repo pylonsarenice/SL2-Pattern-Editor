@@ -1,6 +1,10 @@
 # Boss Slicer SL-2 
-
 The Boss Slicer SL-2 can be connected to a PC via USB. The Boss Tone Studio software can then be used to import and export collections of patterns called Live Sets as .tsl files. At the time of writing Boss have not provided a pattern editor. 
+
+# Pattern editors
+I  have included my initial attempt at building a GUI to enable pattern editing in this repo. **However, I strongly recommend other interested developers contribute to https://github.com/Andrew0Hill/SL2_Patch_Builder which benefits from a web interface and far better coding!**
+
+Thanks to the commenters on https://www.reddit.com/r/guitarpedals/comments/100o9gc/creating_custom_patterns_for_the_boss_slicer_sl2/ for advice and enthusiasm! 
 
 # Live set TSL files
 The .tsl files use the JSON file format and contain:
@@ -19,7 +23,6 @@ The [Boss MD-500 Owner's Manual](https://static.roland.com/assets/media/pdf/MD-5
 # PATCH%COM
 Name of the pattern in ASCII
 
-
 # PATCH%SLICER
 
 | Index | Parameter | Range of values (converted from Hex to Dec) | Description |
@@ -34,7 +37,11 @@ Name of the pattern in ASCII
 | 76-99 (24) | EFFECT | 0 to 100 |Adjusts the volume of the effect sound for each step.|
 | 100-123 (24) |PITCH | 0 to 24 | Unlike the MD-500 which uses EFFECT to control the pitch effect I think the SL-2 uses these values. I think values of 0 to 24 correspond to pitches -12 to +12 semitones around the input note. |
 
-# PATCH%COMP
+# Analysing publicly available Live Set files
+
+I've downloaded the Live Set files available from http://bosstonecentral.com/liveset/category/sl-2/ and parsed them with a simple Python script to get some indication of what each parameter controls.
+
+## PATCH%COMP
 I think COMP is short for COMPRESSOR.
 
 | Index | Min value | Max value | Number of unique values | Comments |
@@ -47,12 +54,12 @@ I think COMP is short for COMPRESSOR.
 |5|4|17|9| RATIO? |
 |6|0|30|2| DIRECT MIX? |
 
-# PATCH%DIVIDER
+## PATCH%DIVIDER
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|9|2| These values are always 00, 09. I think this is related to how the input signal is split and recombined and is probably safely ignored? |
 
-# PATCH%PHASER(1)
+## PATCH%PHASER(1)
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|1|2| |
@@ -66,7 +73,7 @@ I think COMP is short for COMPRESSOR.
 |8|41|100|7| |
 |9|0|56|2| |
 
-# PATCH%FLANGER(1)
+## PATCH%FLANGER(1)
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|1|2| |
@@ -81,7 +88,7 @@ I think COMP is short for COMPRESSOR.
 |9|30|100|2| |
 |10|0|100|3| |
 
-# PATCH%TREMOLO(1)
+## PATCH%TREMOLO(1)
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|1|2| |
@@ -91,7 +98,7 @@ I think COMP is short for COMPRESSOR.
 |4|27|100|11| |
 |5|50|100|6| |
 
-# PATCH%OVERTONE(1)
+## PATCH%OVERTONE(1)
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|1|2| |
@@ -104,7 +111,7 @@ I think COMP is short for COMPRESSOR.
 |7|50|65|5| |
 |8|0|1|2| |
 
-# PATCH%MIXER
+## PATCH%MIXER
 | Index | Min value | Max value | Number of unique values | Comments |
 | ----- | --------- | --------- | ----------------------- | -------- |
 |0|0|1|2| |
@@ -113,7 +120,7 @@ I think COMP is short for COMPRESSOR.
 |3|0|1|2| |
 |4|18|100|20| |
 
-# PATCH%NS
+## PATCH%NS
 I think NS is short for NOISE SUPRESSION.
 
 | Index | Min value | Max value | Number of unique values | Comments |
@@ -122,7 +129,7 @@ I think NS is short for NOISE SUPRESSION.
 |1|30|75|15| |
 |2|10|34|4| |
 
-# PATCH%PEQ
+## PATCH%PEQ
 I think PEQ is short for PARAMETRIC EQUALISATION.
 
 | Index | Min value | Max value | Number of unique values | Comments |
@@ -140,7 +147,7 @@ I think PEQ is short for PARAMETRIC EQUALISATION.
 |10|0|10|7| |
 |11|25|29|3| |
 
-# All non-slicer values for each publicly available pattern
+## All non-slicer values for each publicly available pattern
 
 |Name|COMP 0|1|2|3|4|5|6|PHASER(1) 0|1|2|3|4|5|6|7|8|9|FLANGER(1) 0|1|2|3|4|5|6|7|8|9|10|TREMOLO(1) 0|1|2|3|4|5|OVERTONE(1) 0|1|2|3|4|5|6|7|8|MIXER 0|1|2|3|4|NS 0|1|2|PEQ 0|1|2|3|4|5|6|7|8|9|10|11|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -316,5 +323,4 @@ I think PEQ is short for PARAMETRIC EQUALISATION.
 | McR Organ Move   | 1|70|50|44|50|12|0|0|0|70|50|0|55|0|0|100|0|0|25|50|80|75|0|0|0|0|100|0|0|100|85|0|50|50|1|68|45|50|100|50|53|50|1|0|1|77|1|100|1|75|30|1|20|20|19|14|1|12|17|0|18|0|29|
 | McR Organ        | 1|70|50|44|50|12|0|0|0|70|50|0|55|0|0|100|0|0|25|50|80|75|0|0|0|0|100|0|1|100|110|0|50|50|1|68|45|50|100|50|53|50|1|1|1|100|1|100|1|66|30|1|20|20|20|14|1|12|17|0|18|0|29|
 | McR Magic        | 1|70|50|44|50|12|0|0|0|70|50|0|55|0|0|100|0|0|25|50|80|75|0|0|0|0|100|0|0|100|85|0|50|50|1|68|45|50|100|50|53|50|1|0|1|100|1|100|1|66|30|1|20|20|20|14|1|12|17|0|18|0|29|
-
 
