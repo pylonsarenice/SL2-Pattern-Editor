@@ -2,7 +2,9 @@
 The Boss Slicer SL-2 can be connected to a PC via USB. The Boss Tone Studio software can then be used to import and export collections of patterns called Live Sets as .tsl files. At the time of writing Boss have not provided a pattern editor. 
 
 # Pattern editors
-I  have included my initial attempt at building a GUI to enable pattern editing in this repo. **However, I strongly recommend other interested developers contribute to https://github.com/Andrew0Hill/SL2_Patch_Builder which benefits from a web interface and far better coding!**
+I  have included my initial attempt at building a GUI (simple_gui.py) to enable pattern editing in this repo. A compiled version is available from https://mega.nz/file/jjoRGbxZ#WP9YVbbeDVNyLH5-JWFyKNFclyUt2s90hsj4OBkqCMo
+
+**However, I strongly recommend other interested users and developers instead contribute to https://github.com/Andrew0Hill/SL2_Patch_Builder which benefits from a web interface and far better coding!**
 
 Thanks to the commenters on https://www.reddit.com/r/guitarpedals/comments/100o9gc/creating_custom_patterns_for_the_boss_slicer_sl2/ for advice and enthusiasm! 
 
@@ -39,7 +41,7 @@ Name of the pattern in ASCII
 
 # Analysing publicly available Live Set files
 
-I've downloaded the Live Set files available from http://bosstonecentral.com/liveset/category/sl-2/ and parsed them with a simple Python script to get some indication of what each parameter controls.
+I've downloaded the Live Set files available from http://bosstonecentral.com/liveset/category/sl-2/ and parsed them with a simple Python script (parse_tsl.py) to get some indication of what each parameter controls.
 
 ## PATCH%COMP
 I think COMP is short for COMPRESSOR.
