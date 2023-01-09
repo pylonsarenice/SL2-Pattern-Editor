@@ -1,10 +1,10 @@
 # Boss Slicer SL-2 
 The Boss Slicer SL-2 can be connected to a PC via USB. The Boss Tone Studio software can then be used to import and export collections of patterns called Live Sets as .tsl files. At the time of writing Boss have not provided a pattern editor. 
 
-# Pattern editors
-I  have included my initial attempt at building a GUI (simple_gui.py) to enable pattern editing in this repo. A compiled version is available from https://mega.nz/file/jjoRGbxZ#WP9YVbbeDVNyLH5-JWFyKNFclyUt2s90hsj4OBkqCMo
+This document describes my progress towards understanding the .tsl files and created a simple GUI to edit these. **I strongly recommend other interested users and developers instead contribute to https://github.com/Andrew0Hill/SL2_Patch_Builder which benefits from a web interface and far better coding!**
 
-**However, I strongly recommend other interested users and developers instead contribute to https://github.com/Andrew0Hill/SL2_Patch_Builder which benefits from a web interface and far better coding!**
+# Pattern editor
+I  have included my initial attempt at building a GUI (simple_gui.py) to enable pattern editing in this repo. A compiled version is available from https://mega.nz/file/jjoRGbxZ#WP9YVbbeDVNyLH5-JWFyKNFclyUt2s90hsj4OBkqCMo
 
 Thanks to the commenters on https://www.reddit.com/r/guitarpedals/comments/100o9gc/creating_custom_patterns_for_the_boss_slicer_sl2/ for advice and enthusiasm! 
 
